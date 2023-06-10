@@ -15,10 +15,13 @@ namespace Product.API.Infrastructure.Data
         public DbSet<Order> Orders { get; set; }
 
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //    modelBuilder.Entity<Order>().HasOne(p => p.Product).WithMany(p => p.Orders);
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Productt>()
+                .HasIndex(b => b.Name)
+                .IsUnique();
+        }
     }
 }
